@@ -1,0 +1,13 @@
+# Ignore local Vagrant generated files
+.vagrant
+
+# Ignore Drupal configuration files that may contain sensitive information.
+webapp/sites/*/settings*.php
+
+# Ignore Drupal paths that contain user-generated content.
+webapp/sites/*/files
+webapp/sites/*/private
+
+# Ignore default text files
+.htaccess
+*sass-cache*
