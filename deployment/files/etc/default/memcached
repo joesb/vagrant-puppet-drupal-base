@@ -1,0 +1,3 @@
+# THIS FILE MANAGED BY PUPPET - do not edit here
+# Set this to yes to enable memcached.
+ENABLE_MEMCACHED=yes
