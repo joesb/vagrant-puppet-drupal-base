@@ -20,10 +20,10 @@ Vagrant::Config.run do |config|
   config.vm.host_name = "my-vagrant-box.local"
   
   # Host-only network
-  config.vm.network :hostonly, "192.168.30.20"
+  config.vm.network :hostonly, "192.168.30.21"
   
   # forward the webserver port 
-  config.vm.forward_port 80, 8080, :auto => true
+  config.vm.forward_port 80, 8380, :auto => true
   
   # Main vagrant share folder, not the root of this directory as normal
   config.vm.share_folder "v-root", "/vagrant", "./vagrant", :nfs => false
