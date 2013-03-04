@@ -46,8 +46,8 @@ import "classes/*"
   # NFS for shared folders
   package { nfs-utils: ensure => installed }
   service { [ "nfs", "nfslock" ]:
-    ensure => true,
-    enable => true,
+    ensure => running,
+    # enable => true,
     require => Package["nfs-utils"],
   }
   

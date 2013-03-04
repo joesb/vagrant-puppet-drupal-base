@@ -267,7 +267,6 @@ $drupal_hash_salt = '-T-CDiyGp-gyeqeRQTtttfCN8sJGO8T3rRysEa5f8aU';
  * for you.
  */
 # $base_url = 'http://www.example.com';  // NO trailing slash!
-// $base_url = 'http://www.oxfam.local:8080';
 
 /**
  * PHP settings:
@@ -524,7 +523,6 @@ $conf['404_fast_html'] = '<html xmlns="http://www.w3.org/1999/xhtml"><head><titl
  */
 # $conf['allow_authorize_operations'] = FALSE;
 
-// $conf['install_profile'] = 'oxfam';
 
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 'on' );
@@ -542,7 +540,7 @@ ini_set('allow_call_time_pass_reference', 'on');
 //   'localhost:11212' => 'sessions',
 //   'localhost:11213' => 'users',
 // );
-// $conf['memcache_key_prefix'] = 'oxfam_www';
+// $conf['memcache_key_prefix'] = 'www';
 // $conf['memcache_bins'] = array(
 //   'cache' => 'default',
 //   'cache_admin_menu' => 'default',
@@ -588,15 +586,3 @@ ini_set('allow_call_time_pass_reference', 'on');
 // $conf['page_compression'] = FALSE;
 // $conf['preprocess_css'] = FALSE;
 // $conf['preprocess_js'] = FALSE;
-// 
-// 
-// // Icon file directory
-// $conf['file_icon_directory'] = 'sites/all/themes/globalidentity/images/icons';
-// 
-// // Conf for site live
-// $conf['site_is_live'] = FALSE;
-// 
-// // External Links pattern matching
-// $conf['extlink_exclude'] = '[a-z0-9.]oxfam[a-z0-9.]';
-// 
-// $conf['esi_default_ttl'] = 300;

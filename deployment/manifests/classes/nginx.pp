@@ -75,14 +75,6 @@ class nginx::conf {
     source => "/vagrant/deployment/files/etc/nginx/conf.d/default.conf"
   }
   
-  # file { "/etc/nginx/conf.d/blogs.oxfam.local.conf":
-  #   source => "/vagrant/deployment/files/etc/nginx/conf.d/blogs.oxfam.local.conf"
-  # }
-  # 
-  # file { "/etc/nginx/conf.d/d6blogs.oxfam.local.conf":
-  #   source => "/vagrant/deployment/files/etc/nginx/conf.d/d6blogs.oxfam.local.conf"
-  # }
-  
   file { "/etc/php.d/apc.ini":
     source => "/vagrant/deployment/files/etc/php.d/apc.ini",
   }

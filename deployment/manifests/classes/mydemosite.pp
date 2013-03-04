@@ -30,6 +30,13 @@ class mydemosite::conf {
     # mode => 0644,
     require => File["/var/www/webapp/sites"]
   }
+  file { "/var/www/webapp/sites/default/files":
+    ensure => directory,
+    owner => "501",
+    group => "vagrant",
+    mode => 0777,
+    require => File["/var/www/webapp/sites/default"]
+  }
   
   file {"/var/www/webapp/sites/default/settings.php":
     source => "/vagrant/deployment/files/www.mydemosite.local/var/www/webapp/sites/default/settings.php",
@@ -39,8 +46,8 @@ class mydemosite::conf {
     require => [ File["/var/www/webapp"], File["/var/www/webapp/sites/default"], Class ["nginx::service"] ]
   }
  
-  file { "/etc/nginx/conf.d/www.mydemosite.local.conf":
-    source => "/vagrant/deployment/files/www.mydemosite.local/etc/nginx/conf.d/www.mydemosite.local.conf",
+  file { "/etc/nginx/conf.d/www.dclondon.local.conf":
+    source => "/vagrant/deployment/files/www.mydemosite.local/etc/nginx/conf.d/www.dclondon.local.conf",
     owner => "root",
     group => "root",
     # require => Class ["nginx::service"]
@@ -51,7 +58,7 @@ class mydemosite::conf {
   exec { "create-mysql-db":
     unless =>  "mysql -udemo -pdemo drupal_demo",
     path => ["bin", "/usr/bin"],
-    command => "mysql -uroot -p$mysql_password -e \"CREATE DATABASE drupal_demo COLLATE = 'utf8_general_ci'; grant usage on *.* to demo@localhost identified by 'demo'; grant all privileges on drupal_demo.* to demo@localhost;\"",
+    command => "mysql -uroot -p$mysql_password -e \"CREATE DATABASE drupal_demo COLLATE = 'utf8_general_ci'; grant usage on *.* to demo@localhost identified by 'demo'; grant all privileges on drupal_demo.* to demo@localhost;\" ; mysql -uroot -p$mysql_password drupal_demo < /vagrant/deployment/database/drupal_demo.sql",
     require => [Class["mysql::service"], Exec["set-mysql-password"]],
   }
   

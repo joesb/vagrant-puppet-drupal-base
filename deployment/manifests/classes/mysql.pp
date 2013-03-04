@@ -34,13 +34,6 @@ class mysql::conf {
     command => "/usr/bin/mysqladmin -uroot password $mysql_password",
     require => [Class["mysql::service"]],
   }
-  
-  # exec { "create-mysql-dbs":
-  #   unless =>  "mysql -uoxfam -poxfam www_oxfam_d7",
-  #   path => ["bin", "/usr/bin"],
-  #   command => "mysql -uroot -p$mysql_password -e \"create database www_oxfam_d7; create database blogs_oxfam_d7; create database www_oxfam_d6; create database blogs_oxfam_d6; grant usage on *.* to oxfam@localhost identified by 'oxfam'; grant all privileges on www_oxfam_d7.* to oxfam@localhost; grant all privileges on blogs_oxfam_d7.* to oxfam@localhost; grant all privileges on www_oxfam_d6.* to oxfam@localhost; grant all privileges on blogs_oxfam_d6.* to oxfam@localhost;\"",
-  #   require => [Class["mysql::service"], Exec["set-mysql-password"]],
-  # }
 }
 
 class mysql {
