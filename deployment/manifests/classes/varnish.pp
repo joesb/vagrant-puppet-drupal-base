@@ -4,7 +4,7 @@ class varnish::repo {
     ensure => installed,
   }
   package { "varnish-release":
-    source => "http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release-3.0-1.noarch.rpm"
+    source => "http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release/varnish-release-3.0-1.noarch.rpm"
   }
 }
 

@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   # will be fetched if it doesn't already exist
   # on the user's system.
   # config.vm.box_url = "http://bit.ly/centos63-puppet-box"
-  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box"
+  config.vm.box_url = "http://packages.vstone.eu/vagrant-boxes/virtualbox/4.3.2/centos-6.x-64bit-puppet.3.x-chef.0.10.x-vbox.4.3.2-1.box"
   
   # set the host name
   # config.vm.hostname = "testing.local"
@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   # Main vagrant share folder, not the root of this directory as normal
   # switch the comments for these lines if you do/don't have NFS on your local machine
   # config.vm.synced_folder "deployment/", "/vagrant/deployment", :nfs => false
-  config.vm.synced_folder "deployment/", "/vagrant/deployment", :nfs => true
+  config.vm.synced_folder "deployment/", "/vagrant/deployment", :nfs => false
   
   # Mount webapp drive
   # switch the comments for these lines if you do/don't have NFS on your local machine
