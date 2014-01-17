@@ -4,14 +4,14 @@ class github-config {
   package { "git": ensure => installed }
 
   # Install gitflow
-  exec { "get_git_flow":
-    command => "/usr/bin/wget --no-check-certificate -q -O - https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | sudo bash",
-    creates => "/usr/local/bin/gitflow-common",
-    require => [ 
-      Package['wget'], 
-      Package['git'] 
-    ],
-  }
+  # exec { "get_git_flow":
+  #   command => "/usr/bin/wget --no-check-certificate -q -O - https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | sudo bash",
+  #   creates => "/usr/local/bin/gitflow-common",
+  #   require => [ 
+  #     Package['wget'], 
+  #     Package['git'] 
+  #   ],
+  # }
   
   # A user .gitconfig file
   file { "/home/vagrant/.gitconfig":
