@@ -110,6 +110,33 @@ class nginx::conf {
   
   include pma
   
+  # Find the nginx sites.
+  $site_names_string = generate('/usr/bin/find', '-L', '/vagrant/sites/', '-maxdepth', '1', '-mindepth', '1', '-type', 'd', '-printf', '%f\0')
+  $site_names = split($site_names_string, '\0')
+
+  # Set up the cores
+  define nginxSiteResource {
+    # The file in conf.d.
+    file {"/etc/nginx/conf.d/${name}.conf":
+      ensure => 'file',
+      content => template('/vagrant/deployment/files/templates/nginx/site.erb'),
+      notify => Class["nginx::service"],
+      require => Class ["nginx::install"],
+      owner => 'root',
+      group => 'root',
+    }
+
+    # Add this virtual host to the hosts file
+    host { $name:
+      ip => '127.0.0.1',
+      comment => 'Added automatically by Puppet',
+      ensure => 'present',
+    }
+
+  }
+  # Puppet magically turns our array into lots of resources.
+  nginxSiteResource { $site_names: }
+  
 }
 
 class nginx {
