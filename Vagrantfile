@@ -12,12 +12,12 @@ Vagrant.configure("2") do |config|
   # config.vm.hostname = "testing.local"
   
   # Host-only network
-  config.vm.network :private_network, ip: "192.168.30.40"
+  config.vm.network :private_network, ip: "192.168.30.41"
   
   # forward the webserver port 
   config.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
   # and solr port 
-  config.vm.network :forwarded_port, guest: 8180, host: 8001, auto_correct: true
+  # config.vm.network :forwarded_port, guest: 8180, host: 8001, auto_correct: true
   
   # Main vagrant share folder, not the root of this directory as normal
   # switch the comments for these lines if you do/don't have NFS on your local machine
@@ -27,10 +27,14 @@ Vagrant.configure("2") do |config|
   # Mount webapp drive
   # switch the comments for these lines if you do/don't have NFS on your local machine
   # config.vm.synced_folder "webapp/", "/var/www/webapp", :nfs => false
-  config.vm.synced_folder "webapp/", "/var/www/webapp", :nfs => true
+  config.vm.synced_folder "webapp/", "/var/www/webapp", :nfs => false
     
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
+  
+
+  # Enable ssh key forwarding
+  config.ssh.forward_agent = true
   
   # bump the memory and cpu allocation
   config.vm.provider :virtualbox do |vb|
