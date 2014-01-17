@@ -132,6 +132,26 @@ class nginx::conf {
       comment => 'Added automatically by Puppet',
       ensure => 'present',
     }
+    
+    # add a mysql db per site
+    $mysql_name = regsubst($name, '\.', '_', 'G')
+    exec { "create-mysql-db-${mysql_name}":
+      unless =>  "mysql -u${mysql_name} -p${mysql_name} ${mysql_name}",
+      path => ["bin", "/usr/bin"],
+      command => "mysql -uroot -proot -e \"CREATE DATABASE ${mysql_name} COLLATE = 'utf8_general_ci'; grant usage on *.* to ${mysql_name}@localhost identified by '${mysql_name}'; grant all privileges on ${mysql_name}.* to ${mysql_name}@localhost;\"",
+      require => [Class["mysql::service"], Exec["set-mysql-password"]],
+    }
+    
+    # add a settings.php for the site
+    if file("/vagrant/sites/${name}/sites/default/default.settings.php", "/vagrant/deployment/files/not_found.txt") != 'not found' {
+      file {"/vagrant/sites/${name}/sites/default/settings.php":
+        ensure => 'file',
+        content => template('/vagrant/deployment/files/templates/drupal/settings.erb'),
+        owner => 'vagrant',
+        group => 'vagrant',
+        notify => [],
+      }
+    }
 
   }
   # Puppet magically turns our array into lots of resources.
