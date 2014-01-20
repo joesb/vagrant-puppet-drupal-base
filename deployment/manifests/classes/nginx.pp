@@ -151,6 +151,13 @@ class nginx::conf {
         group => 'vagrant',
         notify => [],
       }
+      file {"/vagrant/sites/${name}/sites/default/files":
+        ensure => 'directory',
+        owner => 'vagrant',
+        group => 'vagrant',
+        notify => [],
+      }
+      
     }
 
   }
