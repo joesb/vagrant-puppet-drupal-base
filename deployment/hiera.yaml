@@ -5,7 +5,7 @@
 :backends:
     - yaml
     - puppet
-    # - json
+    - json
 
 :yaml:
   :datadir: '/vagrant/deployment/hieradata'
