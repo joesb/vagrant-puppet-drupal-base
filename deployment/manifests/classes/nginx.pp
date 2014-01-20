@@ -17,7 +17,8 @@ class nginx::install {
     "php-mbstring",
     "php-pdo",
     "php-pecl-apc",
-    "php-xml"
+    "php-xml",
+    "php-pear"
   ]
   
   package { $packagelist:

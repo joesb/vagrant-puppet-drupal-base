@@ -7,6 +7,11 @@ import "classes/*"
     ensure => "present",
   }
   
+  class { 'wget':
+    version => 'present'
+  }
+  
+  
  File { owner => 0, group => 0, mode => 0644 }
  
  file { '/etc/motd':
@@ -40,7 +45,7 @@ import "classes/*"
   package { mlocate: ensure => installed }
   package { lsof: ensure => installed }
   package { ngrep: ensure => installed, require => Yumrepo["epel"]  }
-  package { wget: ensure => installed }
+  # package { wget: ensure => installed }
   package { cronolog: ensure => installed }
   
   # NFS for shared folders

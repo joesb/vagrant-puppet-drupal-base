@@ -25,4 +25,7 @@ class webserver {
   
   # PHPMyAdmin
   include pma
+  
+  # behat
+  include behat
 }
