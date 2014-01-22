@@ -8,7 +8,7 @@ server {
   merge_slashes on;
 
   listen        8000;
-  server_name @name;
+  server_name <%= @name %>;
 
   root /vagrant/sites/<%= @name %>;
 
