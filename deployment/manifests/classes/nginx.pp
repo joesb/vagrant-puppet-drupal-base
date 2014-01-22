@@ -135,7 +135,7 @@ class nginx::conf {
     }
     
     # add a mysql db per site
-    $mysql_name = regsubst($name, '\.', '_', 'G')
+    $mysql_name = regsubst($name, '[\.-]', '_', 'G')
     exec { "create-mysql-db-${mysql_name}":
       unless =>  "mysql -u${mysql_name} -p${mysql_name} ${mysql_name}",
       path => ["bin", "/usr/bin"],
