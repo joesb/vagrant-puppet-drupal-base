@@ -15,7 +15,7 @@ import "classes/*"
  File { owner => 0, group => 0, mode => 0644 }
  
  file { '/etc/motd':
-   content => "Welcome to vagrant dev box\n\nNo local changes - see deployment/manifests for configs\n\n"
+   content => "Welcome to vagrant dev box\n\nNo local changes - see puppet/manifests for configs\n\n"
  }
 
   yumrepo { "epel":
@@ -67,6 +67,6 @@ import "classes/*"
     mode => 0644,
     owner => vagrant,
     group => vagrant,
-    source => "/vagrant/deployment/files/home/vagrant/.bashrc",
+    source => "/vagrant/puppet/files/home/vagrant/.bashrc",
   }
   

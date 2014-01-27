@@ -8,9 +8,9 @@
     - json
 
 :yaml:
-  :datadir: '/vagrant/deployment/hieradata'
+  :datadir: '/vagrant/puppet/hieradata'
 
 :json:
     # @todo replace with absolute path for non-Vagrant use
     # alternatively set a top-level variable in default.pp and do %{::var_name}
-    :datadir: '/vagrant/deployment/hieradata'
+    :datadir: '/vagrant/puppet/hieradata'

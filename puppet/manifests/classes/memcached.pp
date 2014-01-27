@@ -27,11 +27,11 @@ class memcached::conf {
   }
 
   file { "/etc/default/memcached":
-    source => "/vagrant/deployment/files/etc/default/memcached"
+    source => "/vagrant/puppet/files/etc/default/memcached"
   }
 
   file { "/etc/memcached.conf":
-    source => "/vagrant/deployment//files/etc/memcached.conf"
+    source => "/vagrant/puppet//files/etc/memcached.conf"
   }
   
   # Start extra memcached servers for sessions and users

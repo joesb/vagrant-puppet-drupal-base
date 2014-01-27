@@ -32,7 +32,7 @@ class mydemosite::conf {
   }
   
   file {"/var/www/webapp/sites/default/settings.php":
-    source => "/vagrant/deployment/files/www.mydemosite.local/var/www/webapp/sites/default/settings.php",
+    source => "/vagrant/puppet/files/www.mydemosite.local/var/www/webapp/sites/default/settings.php",
     ensure => file,
     # owner => "501",
     # group => "vagrant",
@@ -40,7 +40,7 @@ class mydemosite::conf {
   }
  
   file { "/etc/nginx/conf.d/www.mydemosite.local.conf":
-    source => "/vagrant/deployment/files/www.mydemosite.local/etc/nginx/conf.d/www.mydemosite.local.conf",
+    source => "/vagrant/puppet/files/www.mydemosite.local/etc/nginx/conf.d/www.mydemosite.local.conf",
     owner => "root",
     group => "root",
     # require => Class ["nginx::service"]

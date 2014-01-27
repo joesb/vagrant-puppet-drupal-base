@@ -46,7 +46,7 @@ class drush::conf {
     mode => 0644,
     owner => root,
     group => root,
-    source => "/vagrant/deployment/files/etc/drush/drushrc.php",
+    source => "/vagrant/puppet/files/etc/drush/drushrc.php",
     require => [
       Class["drush::install"],
       File["/etc/drush"],
