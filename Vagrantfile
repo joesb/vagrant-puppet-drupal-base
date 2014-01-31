@@ -28,6 +28,8 @@ Vagrant.configure("2") do |config|
   # switch the comments for these lines if you do/don't have NFS on your local machine
   # config.vm.synced_folder "webapp/", "/var/www/webapp", :nfs => false
   config.vm.synced_folder "webapp/", "/var/www/webapp", :nfs => false
+  
+  config.vm.synced_folder "sites", "/vagrant_sites", :nfs => true
     
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
@@ -45,7 +47,7 @@ Vagrant.configure("2") do |config|
     puppet.manifests_path = "deployment/manifests"
     puppet.manifest_file  = "dev.pp"
     puppet.module_path = "deployment/modules"
-    puppet.options =  ["--verbose"]
+    puppet.options =  ["--verbose", "--hiera_config /vagrant/deployment/hiera.yaml"]
   end
 
 end
