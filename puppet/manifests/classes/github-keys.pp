@@ -18,7 +18,7 @@ class github-config {
     mode => 0644,
     owner => vagrant,
     group => vagrant,
-    source => "/vagrant/deployment/files/home/vagrant/.gitconfig",
+    source => "/vagrant/puppet/files/home/vagrant/.gitconfig",
     require => [
       Package["git"],
     ],
@@ -28,7 +28,7 @@ class github-config {
     mode => 0644,
     owner => vagrant,
     group => vagrant,
-    source => "/vagrant/deployment/files/home/vagrant/.gitignore_global",
+    source => "/vagrant/puppet/files/home/vagrant/.gitignore_global",
     require => [
       Package["git"],
     ],

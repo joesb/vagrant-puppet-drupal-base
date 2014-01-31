@@ -42,7 +42,7 @@ class xhprof::conf {
   }
   
   file { "/etc/php.d/graphviz.ini":
-    source => "/vagrant/deployment/files/etc/php.d/graphviz.ini",
+    source => "/vagrant/puppet/files/etc/php.d/graphviz.ini",
     mode => 644,
     notify => Class ["nginx::service"]
   }

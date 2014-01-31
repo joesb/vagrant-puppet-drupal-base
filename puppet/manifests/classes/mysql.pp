@@ -23,7 +23,7 @@ class mysql::conf {
 
   # my.cnf for MySQL
   file { "/etc/my.cnf":
-    source => "/vagrant/deployment/files/etc/my.cnf",
+    source => "/vagrant/puppet/files/etc/my.cnf",
   }
   
   $mysql_password = "root"

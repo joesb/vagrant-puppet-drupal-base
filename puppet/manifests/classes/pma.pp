@@ -19,7 +19,7 @@ class pma::conf {
   }
   
   file { "/var/www/html/pma/config.inc.php":
-    source => "/vagrant/deployment/files/var/www/html/pma/config.inc.php"
+    source => "/vagrant/puppet/files/var/www/html/pma/config.inc.php"
   }
 }
 

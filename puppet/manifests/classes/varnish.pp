@@ -40,32 +40,32 @@ class varnish::conf {
   }
   
   file { "/etc/varnish/default.vcl":
-    source => "/vagrant/deployment/files/etc/varnish/default.vcl"
+    source => "/vagrant/puppet/files/etc/varnish/default.vcl"
   }
 
   file { "/etc/varnish/backends.vcl":
-    source => "/vagrant/deployment/files/etc/varnish/backends.vcl"
+    source => "/vagrant/puppet/files/etc/varnish/backends.vcl"
   }
   
   file { "/etc/varnish/acl.vcl":
-    source => "/vagrant/deployment/files/etc/varnish/acl.vcl"
+    source => "/vagrant/puppet/files/etc/varnish/acl.vcl"
   }
   
   file { "/etc/varnish/esi.vcl":
-    source => "/vagrant/deployment/files/etc/varnish/esi.vcl"
+    source => "/vagrant/puppet/files/etc/varnish/esi.vcl"
   }
   
   file { "/etc/sysconfig/varnish":
-    source => "/vagrant/deployment/files/etc/sysconfig/varnish"
+    source => "/vagrant/puppet/files/etc/sysconfig/varnish"
   }
   
   file { "/etc/varnish/secret":
-    source => "/vagrant/deployment/files/etc/varnish/secret",
+    source => "/vagrant/puppet/files/etc/varnish/secret",
     mode => 600
   }
   
   file { "/var/www/html/check.html":
-    source => "/vagrant/deployment/files/var/www/html/check.html",
+    source => "/vagrant/puppet/files/var/www/html/check.html",
     mode => 755,
     require => Class ["nginx::service"]
   }

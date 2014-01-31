@@ -73,29 +73,29 @@ class nginx::conf {
   
   
   file { "/etc/nginx/conf.d/default.conf":
-    source => "/vagrant/deployment/files/etc/nginx/conf.d/default.conf"
+    source => "/vagrant/puppet/files/etc/nginx/conf.d/default.conf"
   }
   
   # file { "/etc/nginx/conf.d/blogs.oxfam.local.conf":
-  #   source => "/vagrant/deployment/files/etc/nginx/conf.d/blogs.oxfam.local.conf"
+  #   source => "/vagrant/puppet/files/etc/nginx/conf.d/blogs.oxfam.local.conf"
   # }
   # 
   # file { "/etc/nginx/conf.d/d6blogs.oxfam.local.conf":
-  #   source => "/vagrant/deployment/files/etc/nginx/conf.d/d6blogs.oxfam.local.conf"
+  #   source => "/vagrant/puppet/files/etc/nginx/conf.d/d6blogs.oxfam.local.conf"
   # }
   
   file { "/etc/php.d/apc.ini":
-    source => "/vagrant/deployment/files/etc/php.d/apc.ini",
+    source => "/vagrant/puppet/files/etc/php.d/apc.ini",
   }
   
   # PHP for supervisord
   file { "/etc/supervisord.d/php-cgi.ini":
-    source => "/vagrant/deployment/files/etc/supervisord.d/php-cgi.ini",
+    source => "/vagrant/puppet/files/etc/supervisord.d/php-cgi.ini",
   }
 
   # PHP config 
   file { "/etc/php.ini":
-    source => "/vagrant/deployment/files/etc/php.ini",
+    source => "/vagrant/puppet/files/etc/php.ini",
   }
   
   file { "/var/www/html/index.html":
@@ -120,7 +120,7 @@ class nginx::conf {
     # The file in conf.d.
     file {"/etc/nginx/conf.d/${name}.conf":
       ensure => 'file',
-      content => template('/vagrant/deployment/files/templates/nginx/site.erb'),
+      content => template('/vagrant/puppet/files/templates/nginx/site.erb'),
       notify => Class["nginx::service"],
       require => Class ["nginx::install"],
       owner => 'root',
@@ -144,10 +144,10 @@ class nginx::conf {
     }
     
     # add a settings.php for the site
-    if file("/vagrant/sites/${name}/sites/default/default.settings.php", "/vagrant/deployment/files/not_found.txt") != 'not found' {
+    if file("/vagrant/sites/${name}/sites/default/default.settings.php", "/vagrant/puppet/files/not_found.txt") != 'not found' {
       file {"/vagrant/sites/${name}/sites/default/settings.php":
         ensure => 'file',
-        content => template('/vagrant/deployment/files/templates/drupal/settings.erb'),
+        content => template('/vagrant/puppet/files/templates/drupal/settings.erb'),
         owner => 'vagrant',
         group => 'vagrant',
         notify => [],

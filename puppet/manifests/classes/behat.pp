@@ -12,7 +12,7 @@ class behat::install {
   file { "/root/composer.json":
     owner => "root",
     group => "root",
-    source => "/vagrant/deployment/files/composer.json",
+    source => "/vagrant/puppet/files/composer.json",
     require => Class["composer"]
   }
   

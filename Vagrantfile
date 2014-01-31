@@ -21,8 +21,8 @@ Vagrant.configure("2") do |config|
   
   # Main vagrant share folder, not the root of this directory as normal
   # switch the comments for these lines if you do/don't have NFS on your local machine
-  # config.vm.synced_folder "deployment/", "/vagrant/deployment", :nfs => false
-  config.vm.synced_folder "deployment/", "/vagrant/deployment", :nfs => false
+  # config.vm.synced_folder "puppet/", "/vagrant/puppet", :nfs => false
+  config.vm.synced_folder "puppet/", "/vagrant/puppet", :nfs => false
   
   # Mount webapp drive
   # switch the comments for these lines if you do/don't have NFS on your local machine
@@ -44,10 +44,15 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "deployment/manifests"
+    puppet.manifests_path = "puppet/manifests"
     puppet.manifest_file  = "dev.pp"
+<<<<<<< HEAD
     puppet.module_path = "deployment/modules"
     puppet.options =  ["--verbose", "--hiera_config /vagrant/deployment/hiera.yaml"]
+=======
+    puppet.module_path = "puppet/modules"
+    puppet.options =  ["--verbose"]
+>>>>>>> a872b96d0e8f5cc8065caa877fab6a464b649eb9
   end
 
 end
