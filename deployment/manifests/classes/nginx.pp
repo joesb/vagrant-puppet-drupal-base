@@ -135,9 +135,9 @@ class nginx::conf {
     }
     
     # add a mysql db per site
-    $mysql_name = regsubst($name, '[\.-]', '_', 'G')
+    $mysql_name = sprintf("%0-16.16s", regsubst($name, '[\.-]', '_', 'G'))
     exec { "create-mysql-db-${mysql_name}":
-      unless =>  "mysql -u${mysql_name} -p${mysql_name} ${mysql_name}",
+      unless =>  "mysql -uroot -proot ${mysql_name}",
       path => ["bin", "/usr/bin"],
       command => "mysql -uroot -proot -e \"CREATE DATABASE ${mysql_name} COLLATE = 'utf8_general_ci'; grant usage on *.* to ${mysql_name}@localhost identified by '${mysql_name}'; grant all privileges on ${mysql_name}.* to ${mysql_name}@localhost;\"",
       require => [Class["mysql::service"], Exec["set-mysql-password"]],
@@ -152,10 +152,11 @@ class nginx::conf {
         group => 'vagrant',
         notify => [],
       }
-      file {"/vagrant/sites/${name}/sites/default/files":
+      file {"/vagrant_sites/${name}/sites/default/files":
         ensure => 'directory',
-        owner => 'vagrant',
-        group => 'vagrant',
+        owner => 'nginx',
+        group => 'nginx',
+        mode => 777,
         notify => [],
       }
       
