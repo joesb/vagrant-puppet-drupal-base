@@ -10,7 +10,7 @@ server {
   listen        8000;
   server_name <%= @name %>;
 
-  root /vagrant/sites/<%= @name %>;
+  root /vagrant_sites/<%= @name %>;
 
   # rewrite_log on;
   access_log  /var/log/nginx/<%= @name %>.access.log main;
