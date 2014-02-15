@@ -18,7 +18,8 @@ class nginx::install {
     "php-pdo",
     "php-pecl-apc",
     "php-xml",
-    "php-pear"
+    "php-pear",
+    "php-pspell"
   ]
   
   package { $packagelist:
