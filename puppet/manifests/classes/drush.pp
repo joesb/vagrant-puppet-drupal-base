@@ -23,8 +23,10 @@ class drush::install {
   
   exec { "drush_registry_rebuild":
     command => "/usr/bin/drush dl registry_rebuild -q",
-    creates => "/root/.drush/registry_rebuild",
-    require => Exec["drush_console_table"]
+    creates => "/home/vagrant/.drush/registry_rebuild",
+    require => Exec["drush_console_table"],
+    user => 'vagrant',
+    cwd => '/home/vagrant/'
   }
   
 }
